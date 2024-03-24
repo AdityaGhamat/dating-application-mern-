@@ -317,3 +317,101 @@ nav .logo-container .logo {
   display: flex;
   flex-direction: column;
 }
+/*-------- Profile --------*/
+.profile-container {
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  width: 30%;
+  text-align: left;
+  z-index: 1;
+}
+
+.profile-header {
+  background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  color: rgb(255, 255, 255);
+}
+
+.profile-details {
+  padding: 20px;
+}
+
+.img-container {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 20px;
+}
+
+.img-container img {
+  width: 100%;
+  border-radius: 50%;
+}
+/*-------- globalchat --------*/
+/* GlobalChat.css */
+./* GlobalChat.css */
+.global-chat-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.message-container {
+  margin-bottom: 20px;
+}
+
+.message {
+  background-color: #fefefe;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+}
+
+.message-text {
+  font-size: 16px;
+  line-height: 1.4;
+  margin-bottom: 5px;
+}
+
+.message-sender {
+  font-size: 14px;
+  color: #888;
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+}
+
+.message-input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.send-button,
+.start-button {
+  padding: 12px 25px;
+  border: none;
+  background-color: #fd5068;
+  color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.send-button:hover,
+.start-button:hover {
+  background-color: #ff5c78;
+}

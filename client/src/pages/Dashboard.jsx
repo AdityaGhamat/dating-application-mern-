@@ -3,8 +3,10 @@ import { useEffect, useState } from "react";
 import ChatContainer from "../components/ChatContainer";
 import { useCookies } from "react-cookie";
 import axios from "axios";
-
+import { useDispatch } from "react-redux";
+import { adduser } from "../redux/userSlice";
 const Dashboard = () => {
+  const dispatch = useDispatch();
   const [user, setUser] = useState();
   const [genderedUsers, setGenderedUsers] = useState();
   const [lastDirection, setLastDirection] = useState();
@@ -37,6 +39,11 @@ const Dashboard = () => {
     getUser();
   }, []);
 
+  useEffect(() => {
+    if (user != null) {
+      dispatch(adduser(user));
+    }
+  }, [user, dispatch]);
   useEffect(() => {
     if (user) {
       getGenderedUsers();
@@ -74,8 +81,6 @@ const Dashboard = () => {
     (genderedUser) => !matchedUserIds.includes(genderedUser.user_id)
   );
 
-  console.log("filteredGenderedUsers ", filteredGenderedUsers);
-  console.log(genderedUsers);
   return (
     <>
       {user && (

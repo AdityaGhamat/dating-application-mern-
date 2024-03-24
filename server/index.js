@@ -1,13 +1,16 @@
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
+const SOCKET_PORT = 8001;
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const { v4: uuidv4 } = require("uuid");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const bcrypt = require("bcrypt");
+const http = require("http");
+const { Server } = require("socket.io");
 require("dotenv").config();
 
-const uri = "mongodb://localhost:27017";
+const uri = process.env.MONGO_LINK;
 
 const app = express();
 app.use(cors());
@@ -16,6 +19,26 @@ app.use(express.json());
 // Default
 app.get("/", (req, res) => {
   res.json("Hello to my app");
+});
+
+//community-global-chat
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST"],
+  },
+});
+io.on("connection", (socket) => {
+  console.log(`user connected ${socket.id}`);
+
+  socket.on("disconnect", () => {
+    console.log("User disconnected");
+  });
+
+  socket.on("send-message", (message) => {
+    io.emit("received-message", message);
+  });
 });
 
 // Sign up to the Database
@@ -247,4 +270,4 @@ app.post("/message", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log("server running on PORT " + PORT));
+server.listen(PORT, () => console.log("server running on PORT " + PORT));
