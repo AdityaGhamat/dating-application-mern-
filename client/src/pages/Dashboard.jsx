@@ -5,6 +5,7 @@ import { useCookies } from "react-cookie";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { adduser } from "../redux/userSlice";
+import { Link } from "react-router-dom";
 const Dashboard = () => {
   const dispatch = useDispatch();
   const [user, setUser] = useState();
@@ -87,6 +88,9 @@ const Dashboard = () => {
         <div className="dashboard">
           <ChatContainer user={user} />
           <div className="swipe-container">
+            <Link to={"/community"} className="commnunity-headline">
+              Community
+            </Link>
             <div className="card-container">
               {filteredGenderedUsers &&
                 filteredGenderedUsers.map((genderedUser) => (

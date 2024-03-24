@@ -356,7 +356,8 @@ nav .logo-container .logo {
 /*-------- globalchat --------*/
 /* GlobalChat.css */
 ./* GlobalChat.css */
-.global-chat-container {
+
+ .global-chat-container {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
@@ -414,4 +415,9 @@ nav .logo-container .logo {
 .send-button:hover,
 .start-button:hover {
   background-color: #ff5c78;
+}
+.commnunity-headline {
+  position: absolute;
+  top: 15px;
+  right: 20px;
 }

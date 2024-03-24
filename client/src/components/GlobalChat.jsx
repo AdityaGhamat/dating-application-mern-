@@ -31,7 +31,7 @@ const GlobalChat = ({ name }) => {
       <div className="message-container">
         {messages.map((message, index) => (
           <div className="message" key={index}>
-            <h3>{message.message}</h3> from <h3>{name}</h3>
+            <h3>{message.message}</h3>
           </div>
         ))}
       </div>
