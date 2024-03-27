@@ -20,7 +20,9 @@ const ChatInput = ({
     };
 
     try {
-      await axios.post("http://localhost:8000/message", { message });
+      await axios.post("https://dating-application-mern.onrender.com/message", {
+        message,
+      });
       getUsersMessages();
       getClickedUsersMessages();
       setTextArea("");

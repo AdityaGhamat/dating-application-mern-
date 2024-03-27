@@ -28,7 +28,9 @@ const AuthModal = ({ setShowModal, isSignUp }) => {
       }
 
       const response = await axios.post(
-        `http://localhost:8000/${isSignUp ? "signup" : "login"}`,
+        `https://dating-application-mern.onrender.com/${
+          isSignUp ? "signup" : "login"
+        }`,
         { email, password }
       );
 

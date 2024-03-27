@@ -9,9 +9,12 @@ const Community = () => {
   console.log(user);
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/user", {
-        params: { userId },
-      });
+      const response = await axios.get(
+        "https://dating-application-mern.onrender.com/user",
+        {
+          params: { userId },
+        }
+      );
       setUser(response.data);
     } catch (error) {
       console.log(error);
