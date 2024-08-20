@@ -25,7 +25,7 @@ app.get("/", (req, res) => {
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://dating-application-mern.vercel.app",
+    origin: "http://localhost:5173/",
     methods: ["GET", "POST"],
   },
 });

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("https://dating-application-mern.onrender.com/");
+const socket = io("http://localhost:8000/");
 
 const GlobalChat = ({ name }) => {
   const [username, setUsername] = useState("");
