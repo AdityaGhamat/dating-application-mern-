@@ -25,19 +25,25 @@ app.get("/", (req, res) => {
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173/",
+    origin: "*",
     methods: ["GET", "POST"],
+    credentials: true,
   },
 });
 io.on("connection", (socket) => {
-  console.log(`user connected ${socket.id}`);
+  console.log(`User connected: ${socket.id}`);
+
+  socket.on("join-room", (room) => {
+    socket.join(room);
+    console.log(`User ${socket.id} joined room ${room}`);
+  });
+
+  socket.on("send-message", ({ room, message }) => {
+    io.to(room).emit("received-message", message);
+  });
 
   socket.on("disconnect", () => {
     console.log("User disconnected");
-  });
-
-  socket.on("send-message", (message) => {
-    io.emit("received-message", message);
   });
 });
 
