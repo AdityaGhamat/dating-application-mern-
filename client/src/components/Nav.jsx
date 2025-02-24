@@ -1,26 +1,34 @@
+import PropTypes from "prop-types";
+import { useEffect } from "react";
 import whiteLogo from "../images/tinder_logo_white.png";
 import colorLogo from "../images/color-logo-tinder.png";
 
 const Nav = ({ authToken, minimal, setShowModal, showModal, setIsSignUp }) => {
-  const handleClick = () => {
-    setShowModal(true);
-    setIsSignUp(false);
-  };
+  // Dynamically update the page title
+  useEffect(() => {
+    document.title = authToken ? "Welcome Back | Tinder Clone" : "Tinder Clone";
+  }, [authToken]);
 
   return (
     <nav>
       <div className="logo-container">
-        <img
-          className="logo"
-          src={minimal ? colorLogo : whiteLogo}
-          alt="logo"
-        />
+        <a href="/">
+          <img
+            className="logo"
+            src={minimal ? colorLogo : whiteLogo}
+            alt="Tinder Logo"
+          />
+        </a>
       </div>
       {!authToken && !minimal && (
         <button
           className="nav-button"
-          onClick={handleClick}
+          onClick={() => {
+            setShowModal?.(true);
+            setIsSignUp?.(false);
+          }}
           disabled={showModal}
+          aria-label="Open login modal"
         >
           Log in
         </button>
@@ -28,4 +36,14 @@ const Nav = ({ authToken, minimal, setShowModal, showModal, setIsSignUp }) => {
     </nav>
   );
 };
+
+// Define prop types for validation
+Nav.propTypes = {
+  authToken: PropTypes.string,
+  minimal: PropTypes.bool,
+  setShowModal: PropTypes.func,
+  showModal: PropTypes.bool,
+  setIsSignUp: PropTypes.func,
+};
+
 export default Nav;
